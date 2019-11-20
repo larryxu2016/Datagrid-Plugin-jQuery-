@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+	font-size: 16px;
+	font-family: "Roboto", sans-serif;
+}
+
+div {
+	border:none;
+}
+
+.container {
+	width:   auto;
+	height:  auto;
+}
+
+/*----------  left container ----------*/
+.left-container {
+	float: left;
+}
+
+.top-left-container {
+
+}
+
+.outer-bottom-left-container {
+	overflow: hidden;
+}
+.bottom-left-container {
+	overflow: scroll;
+}
+
+/*----------  right container ---------*/
+.right-container {
+	float: left;
+}
+
+.outer-top-right-container {
+	overflow: hidden;
+}
+.top-right-container {
+	overflow: scroll;
+}
+
+.bottom-right-container {
+	overflow: scroll;
+}
+
+/*----------  tables  ---------*/
+table {
+	width: auto;
+	table-layout: fixed;
+	border-collapse: collapse;
+	border-spacing: 0;
+	padding-left:0!important;
+	padding-right:0!important;	
+	margin-left:0!important;
+	margin-right:0!important;
+}
+th, td {
+	overflow: hidden;
+	white-space: nowrap;
+	padding-left:0!important;
+	padding-right:0!important;	
+	margin-left:0!important;
+	margin-right:0!important;
+	
+}
+#cell {
+	width: 60px;
+	height: 20px;
+	margin: auto;
+}
+
+th #cell p {
+	color: rgba(255,255,255,0.8);
+}
+
+td #cell p {
+	color: black;
+	font-weight: bold;
+	text-align: center;
+}
+
+.top-left-table {
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+.top-left-table-cells {
+	background: rgba(16,61,141,0.8);
+	padding: 0.5em 0.5em;
+	border-right: 2px dotted rgba(16,61,141,0.5);
+	border-bottom: 2px dotted rgba(16,61,141,0.5);
+}
+/* th[class="top-left-table-cells"]:not(:only-child, :first-child),
+th[class="top-left-table-cells"]:not(:nth-last-of-type(1)) {
+	border-right: 2px solid #3b6aab;
+} */
+
+.top-right-table {
+	width: 500px;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+.top-right-table-cells {
+	background: rgba(16,61,141,0.8);
+	padding: 0.5em 0.5em;
+	border-right: 2px dotted rgba(16,61,141,0.5);
+	border-bottom: 2px dotted rgba(16,61,141,0.5);
+}
+
+.bottom-left-table {
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+.bottom-left-table-rows:nth-child(even) {
+	background-color: #E8EBF0;
+}
+.bottom-left-table-rows:nth-child(odd) {
+	background-color: #F7F7F7;
+}
+.bottom-left-table-cells {
+	padding: 0.5em 0.5em;
+	border-right: 2px solid white;
+	border-bottom: 2px solid white;
+}
+.row-number-cells {
+	padding: 0.5em 0.5em;
+	border-right: 2px dotted rgba(16,61,141,0.7);
+	border-bottom: 2px solid white;
+	/* background: #5EABE8; */
+}
+
+.bottom-right-table {
+	width: 500px;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+tr[class="bottom-right-table-rows"]:nth-of-type(even) {
+	background-color: #E8EBF0;
+}
+tr[class="bottom-right-table-rows"]:nth-of-type(odd) {
+	background-color: #F7F7F7;
+}
+.bottom-right-table-cells {
+	padding: 0.5em 0.5em;
+	border-right: 2px solid white;
+	border-bottom: 2px solid white;
+}
+
+.table-scrollbar {
+	scrollbar-arrow-color: rgba(255,255,255,0.4);
+}
+.table-scrollbar::-webkit-scrollbar-track {
+	background: rgba(255,255,255,0.4);
+}
+
+.clearfix {
+	clear: both;
+}
+.clearfix::after {
+	clear: both; 
+	content: "";
+	display: table; 
+}
+
+::-webkit-scrollbar {
+	height: 6px; 
+	width: 6px;
+	background: rgba(255,255,255,0.4);
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: rgba(255,255,255,0.4);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: rgba(85,85,85,0.4); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: rgba(85,85,85,0.6); 
+}
