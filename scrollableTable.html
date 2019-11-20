@@ -1,0 +1,477 @@
+<html>
+
+<head>
+	<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+    <style type="text/css">
+	
+
+	.container {
+		width: 100%;
+		height: 100%;
+		border: 1px solid #d7d7d7;
+	}
+	
+	
+	/*----------  top container ----------*/
+	.top-container {
+		width: 100%;
+		height: 34px;
+		border: 1px solid #d7d7d7;
+	}
+	
+	.select-all-button {
+		width: 34px;
+		height: 34px;
+		float: left;
+		border-right: 1px solid #d7d7d7;
+	}
+	
+	.table-header-hiding-scrollbar-container {	
+		width: calc(100% - 35px);
+		height: 34px;
+		float: left;
+        background: #f8f8f8;
+        overflow: hidden;
+	}
+	.table-header-container {
+		width: 100%;
+		float: left;
+		overflow: scroll;
+	}
+	.table-header  {
+		width: 3000px;
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+	.table-header-cells {
+		border-right: 1px solid #d7d7d7;
+		padding: 0.5em 0.5em;
+	}
+	
+	
+	/*----------  bottom container ----------*/
+	.bottom-container {
+		width: 100%;
+        height: 165px;
+		position: relative;
+		border-left: 1px solid #d7d7d7;
+		border-right: 1px solid #d7d7d7;
+		border-bottom: 1px solid #d7d7d7;
+	}	
+	
+	.row-name-hiding-scrollbar-container {
+		width: 34px;
+		height: 165px;
+		float: left;
+        border-right: 1px solid #d7d7d7;
+        background: #f8f8f8;
+        overflow: hidden;
+	}
+	.row-name-container {
+        overflow: scroll;
+		height: 165px;
+		float: left;
+	}
+	.row-name-table {
+        width: 35px;
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+	.row-name-cells {
+		padding: 0.5em 0.5em;
+        border-right: 1px solid #d7d7d7;
+		border-bottom: 1px solid #d7d7d7;
+	}
+	
+	.table-body-container {
+		width: calc(100% - 35px);
+		height: 165px;
+		float: left;
+		overflow: scroll;
+	}
+	.table-body {
+		width: 3000px;	
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+	.table-body-cells {
+		border-right: 1px solid #d7d7d7;
+		border-bottom: 1px solid #d7d7d7;
+		padding: 0.5em 0.5em;
+	}
+
+    .table-scrollbar {
+        scrollbar-arrow-color: #f1f1f1;
+        scrollbar-base-color: #f1f1f1;
+        scrollbar-3dlight-color: #f1f1f1;
+        scrollbar-highlight-color: #f1f1f1;
+        scrollbar-track-color: #f1f1f1;
+        scrollbar-shadow-color: #f1f1f1;
+        scrollbar-dark-shadow-color: #f1f1f1;
+    }
+    .table-scrollbar::-webkit-scrollbar {
+        visibility: hidden;
+    }
+    .table-scrollbar::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+	</style>
+</head>
+
+<body>
+
+    	<div class="top-container">
+        	<div class="select-all-button" >
+            </div>
+            
+            <div class="table-header-hiding-scrollbar-container">
+            <div class="table-header-container" id="header">
+            	<table class="table-header">
+                	<tr>
+                    	<th class="table-header-cells"> aaaaaa </th>
+                        <th class="table-header-cells"> bbbbbb </th>
+                        <th class="table-header-cells"> cccccc </th>
+                        <th class="table-header-cells"> d7d7d7 </th>
+                        <th class="table-header-cells"> eeeeee </th>
+                        <th class="table-header-cells"> d7d7d7 </th>
+                        <th class="table-header-cells"> gggggg </th>
+                        <th class="table-header-cells"> hhhhhh </th>
+                        <th class="table-header-cells"> iiiiii </th>
+                        <th class="table-header-cells"> jjjjjj </th>
+                     	<th class="table-header-cells"> kkkkkk </th>
+                        <th class="table-header-cells"> llllll </th>
+                        <th class="table-header-cells"> mmmmmm </th>
+                        <th class="table-header-cells"> nnnnnn </th>
+                        <th class="table-header-cells"> oooooo </th>
+                     	<th class="table-header-cells"> pppppp </th>
+                    </tr>
+                </table>
+            </div>     
+            </div>      
+        </div>
+        
+        <div class="bottom-container">
+        	<div class="row-name-hiding-scrollbar-container">
+            <div class="row-name-container" id="rowName">
+            	<table class="row-name-table">
+                	<tr> <th class="row-name-cells">1</th> </tr>
+                    <tr> <th class="row-name-cells">2</th> </tr>
+                    <tr> <th class="row-name-cells">3</th> </tr>
+                    <tr> <th class="row-name-cells">4</th> </tr>
+                    <tr> <th class="row-name-cells">5</th> </tr>
+                    <tr> <th class="row-name-cells">6</th> </tr>
+                    <tr> <th class="row-name-cells">7</th> </tr>
+                    <tr> <th class="row-name-cells">8</th> </tr>
+                    <tr> <th class="row-name-cells">9</th> </tr>
+                    <tr> <th class="row-name-cells">10</th> </tr>
+                    <tr> <th class="row-name-cells">11</th> </tr>
+                    <tr> <th class="row-name-cells">12</th> </tr>
+                    <tr> <th class="row-name-cells">13</th> </tr>
+                    <tr> <th class="row-name-cells">14</th> </tr>
+                    <tr> <th class="row-name-cells">15</th> </tr>
+                </table>
+            </div>
+            </div>
+            
+            <div class="table-body-container">
+            	<table class="table-body">
+                	<tr>
+                    	<th class="table-body-cells"> aaaaaa </th>
+                        <th class="table-body-cells"> bbbbbb </th>
+                        <th class="table-body-cells"> cccccc </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> eeeeee </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> gggggg </th>
+                        <th class="table-body-cells"> hhhhhh </th>
+                        <th class="table-body-cells"> iiiiii </th>
+                        <th class="table-body-cells"> jjjjjj </th>
+                     	<th class="table-body-cells"> kkkkkk </th>
+                        <th class="table-body-cells"> llllll </th>
+                        <th class="table-body-cells"> mmmmmm </th>
+                        <th class="table-body-cells"> nnnnnn </th>
+                        <th class="table-body-cells"> oooooo </th>
+                     	<th class="table-body-cells"> pppppp </th>
+                    </tr>
+                    <tr>
+                    	<th class="table-body-cells"> aaaaaa </th>
+                        <th class="table-body-cells"> bbbbbb </th>
+                        <th class="table-body-cells"> cccccc </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> eeeeee </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> gggggg </th>
+                        <th class="table-body-cells"> hhhhhh </th>
+                        <th class="table-body-cells"> iiiiii </th>
+                        <th class="table-body-cells"> jjjjjj </th>
+                     	<th class="table-body-cells"> kkkkkk </th>
+                        <th class="table-body-cells"> llllll </th>
+                        <th class="table-body-cells"> mmmmmm </th>
+                        <th class="table-body-cells"> nnnnnn </th>
+                        <th class="table-body-cells"> oooooo </th>
+                     	<th class="table-body-cells"> pppppp </th>
+                    </tr>
+                    <tr>
+                    	<th class="table-body-cells"> aaaaaa </th>
+                        <th class="table-body-cells"> bbbbbb </th>
+                        <th class="table-body-cells"> cccccc </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> eeeeee </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> gggggg </th>
+                        <th class="table-body-cells"> hhhhhh </th>
+                        <th class="table-body-cells"> iiiiii </th>
+                        <th class="table-body-cells"> jjjjjj </th>
+                     	<th class="table-body-cells"> kkkkkk </th>
+                        <th class="table-body-cells"> llllll </th>
+                        <th class="table-body-cells"> mmmmmm </th>
+                        <th class="table-body-cells"> nnnnnn </th>
+                        <th class="table-body-cells"> oooooo </th>
+                     	<th class="table-body-cells"> pppppp </th>
+                    </tr>
+                    <tr>
+                    	<th class="table-body-cells"> aaaaaa </th>
+                        <th class="table-body-cells"> bbbbbb </th>
+                        <th class="table-body-cells"> cccccc </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> eeeeee </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> gggggg </th>
+                        <th class="table-body-cells"> hhhhhh </th>
+                        <th class="table-body-cells"> iiiiii </th>
+                        <th class="table-body-cells"> jjjjjj </th>
+                     	<th class="table-body-cells"> kkkkkk </th>
+                        <th class="table-body-cells"> llllll </th>
+                        <th class="table-body-cells"> mmmmmm </th>
+                        <th class="table-body-cells"> nnnnnn </th>
+                        <th class="table-body-cells"> oooooo </th>
+                     	<th class="table-body-cells"> pppppp </th>
+                    </tr>
+                    <tr>
+                    	<th class="table-body-cells"> aaaaaa </th>
+                        <th class="table-body-cells"> bbbbbb </th>
+                        <th class="table-body-cells"> cccccc </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> eeeeee </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> gggggg </th>
+                        <th class="table-body-cells"> hhhhhh </th>
+                        <th class="table-body-cells"> iiiiii </th>
+                        <th class="table-body-cells"> jjjjjj </th>
+                     	<th class="table-body-cells"> kkkkkk </th>
+                        <th class="table-body-cells"> llllll </th>
+                        <th class="table-body-cells"> mmmmmm </th>
+                        <th class="table-body-cells"> nnnnnn </th>
+                        <th class="table-body-cells"> oooooo </th>
+                     	<th class="table-body-cells"> pppppp </th>
+                    </tr>
+                    <tr>
+                    	<th class="table-body-cells"> aaaaaa </th>
+                        <th class="table-body-cells"> bbbbbb </th>
+                        <th class="table-body-cells"> cccccc </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> eeeeee </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> gggggg </th>
+                        <th class="table-body-cells"> hhhhhh </th>
+                        <th class="table-body-cells"> iiiiii </th>
+                        <th class="table-body-cells"> jjjjjj </th>
+                     	<th class="table-body-cells"> kkkkkk </th>
+                        <th class="table-body-cells"> llllll </th>
+                        <th class="table-body-cells"> mmmmmm </th>
+                        <th class="table-body-cells"> nnnnnn </th>
+                        <th class="table-body-cells"> oooooo </th>
+                     	<th class="table-body-cells"> pppppp </th>
+                    </tr>
+                    <tr>
+                    	<th class="table-body-cells"> aaaaaa </th>
+                        <th class="table-body-cells"> bbbbbb </th>
+                        <th class="table-body-cells"> cccccc </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> eeeeee </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> gggggg </th>
+                        <th class="table-body-cells"> hhhhhh </th>
+                        <th class="table-body-cells"> iiiiii </th>
+                        <th class="table-body-cells"> jjjjjj </th>
+                     	<th class="table-body-cells"> kkkkkk </th>
+                        <th class="table-body-cells"> llllll </th>
+                        <th class="table-body-cells"> mmmmmm </th>
+                        <th class="table-body-cells"> nnnnnn </th>
+                        <th class="table-body-cells"> oooooo </th>
+                     	<th class="table-body-cells"> pppppp </th>
+                    </tr>
+                    <tr>
+                    	<th class="table-body-cells"> aaaaaa </th>
+                        <th class="table-body-cells"> bbbbbb </th>
+                        <th class="table-body-cells"> cccccc </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> eeeeee </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> gggggg </th>
+                        <th class="table-body-cells"> hhhhhh </th>
+                        <th class="table-body-cells"> iiiiii </th>
+                        <th class="table-body-cells"> jjjjjj </th>
+                     	<th class="table-body-cells"> kkkkkk </th>
+                        <th class="table-body-cells"> llllll </th>
+                        <th class="table-body-cells"> mmmmmm </th>
+                        <th class="table-body-cells"> nnnnnn </th>
+                        <th class="table-body-cells"> oooooo </th>
+                     	<th class="table-body-cells"> pppppp </th>
+                    </tr>
+                    <tr>
+                    	<th class="table-body-cells"> aaaaaa </th>
+                        <th class="table-body-cells"> bbbbbb </th>
+                        <th class="table-body-cells"> cccccc </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> eeeeee </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> gggggg </th>
+                        <th class="table-body-cells"> hhhhhh </th>
+                        <th class="table-body-cells"> iiiiii </th>
+                        <th class="table-body-cells"> jjjjjj </th>
+                     	<th class="table-body-cells"> kkkkkk </th>
+                        <th class="table-body-cells"> llllll </th>
+                        <th class="table-body-cells"> mmmmmm </th>
+                        <th class="table-body-cells"> nnnnnn </th>
+                        <th class="table-body-cells"> oooooo </th>
+                     	<th class="table-body-cells"> pppppp </th>
+                    </tr>
+                    <tr>
+                    	<th class="table-body-cells"> aaaaaa </th>
+                        <th class="table-body-cells"> bbbbbb </th>
+                        <th class="table-body-cells"> cccccc </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> eeeeee </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> gggggg </th>
+                        <th class="table-body-cells"> hhhhhh </th>
+                        <th class="table-body-cells"> iiiiii </th>
+                        <th class="table-body-cells"> jjjjjj </th>
+                     	<th class="table-body-cells"> kkkkkk </th>
+                        <th class="table-body-cells"> llllll </th>
+                        <th class="table-body-cells"> mmmmmm </th>
+                        <th class="table-body-cells"> nnnnnn </th>
+                        <th class="table-body-cells"> oooooo </th>
+                     	<th class="table-body-cells"> pppppp </th>
+                    </tr>
+                    <tr>
+                    	<th class="table-body-cells"> aaaaaa </th>
+                        <th class="table-body-cells"> bbbbbb </th>
+                        <th class="table-body-cells"> cccccc </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> eeeeee </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> gggggg </th>
+                        <th class="table-body-cells"> hhhhhh </th>
+                        <th class="table-body-cells"> iiiiii </th>
+                        <th class="table-body-cells"> jjjjjj </th>
+                     	<th class="table-body-cells"> kkkkkk </th>
+                        <th class="table-body-cells"> llllll </th>
+                        <th class="table-body-cells"> mmmmmm </th>
+                        <th class="table-body-cells"> nnnnnn </th>
+                        <th class="table-body-cells"> oooooo </th>
+                     	<th class="table-body-cells"> pppppp </th>
+                    </tr>
+                    <tr>
+                    	<th class="table-body-cells"> aaaaaa </th>
+                        <th class="table-body-cells"> bbbbbb </th>
+                        <th class="table-body-cells"> cccccc </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> eeeeee </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> gggggg </th>
+                        <th class="table-body-cells"> hhhhhh </th>
+                        <th class="table-body-cells"> iiiiii </th>
+                        <th class="table-body-cells"> jjjjjj </th>
+                     	<th class="table-body-cells"> kkkkkk </th>
+                        <th class="table-body-cells"> llllll </th>
+                        <th class="table-body-cells"> mmmmmm </th>
+                        <th class="table-body-cells"> nnnnnn </th>
+                        <th class="table-body-cells"> oooooo </th>
+                     	<th class="table-body-cells"> pppppp </th>
+                    </tr>
+                    <tr>
+                    	<th class="table-body-cells"> aaaaaa </th>
+                        <th class="table-body-cells"> bbbbbb </th>
+                        <th class="table-body-cells"> cccccc </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> eeeeee </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> gggggg </th>
+                        <th class="table-body-cells"> hhhhhh </th>
+                        <th class="table-body-cells"> iiiiii </th>
+                        <th class="table-body-cells"> jjjjjj </th>
+                     	<th class="table-body-cells"> kkkkkk </th>
+                        <th class="table-body-cells"> llllll </th>
+                        <th class="table-body-cells"> mmmmmm </th>
+                        <th class="table-body-cells"> nnnnnn </th>
+                        <th class="table-body-cells"> oooooo </th>
+                     	<th class="table-body-cells"> pppppp </th>
+                    </tr>
+                    <tr>
+                    	<th class="table-body-cells"> aaaaaa </th>
+                        <th class="table-body-cells"> bbbbbb </th>
+                        <th class="table-body-cells"> cccccc </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> eeeeee </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> gggggg </th>
+                        <th class="table-body-cells"> hhhhhh </th>
+                        <th class="table-body-cells"> iiiiii </th>
+                        <th class="table-body-cells"> jjjjjj </th>
+                     	<th class="table-body-cells"> kkkkkk </th>
+                        <th class="table-body-cells"> llllll </th>
+                        <th class="table-body-cells"> mmmmmm </th>
+                        <th class="table-body-cells"> nnnnnn </th>
+                        <th class="table-body-cells"> oooooo </th>
+                     	<th class="table-body-cells"> pppppp </th>
+                    </tr>
+                    <tr>
+                    	<th class="table-body-cells"> aaaaaa </th>
+                        <th class="table-body-cells"> bbbbbb </th>
+                        <th class="table-body-cells"> cccccc </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> eeeeee </th>
+                        <th class="table-body-cells"> d7d7d7 </th>
+                        <th class="table-body-cells"> gggggg </th>
+                        <th class="table-body-cells"> hhhhhh </th>
+                        <th class="table-body-cells"> iiiiii </th>
+                        <th class="table-body-cells"> jjjjjj </th>
+                     	<th class="table-body-cells"> kkkkkk </th>
+                        <th class="table-body-cells"> llllll </th>
+                        <th class="table-body-cells"> mmmmmm </th>
+                        <th class="table-body-cells"> nnnnnn </th>
+                        <th class="table-body-cells"> oooooo </th>
+                     	<th class="table-body-cells"> pppppp </th>
+                    </tr>
+                          
+                </table>
+            </div>
+        </div>
+		
+</body>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$('.table-body-container').on('scroll', function(){
+		$('.row-name-container').scrollTop($(this).scrollTop());
+	});
+	
+	$('.row-name-container').on('scroll', function(e){
+		//e.preventDefault();
+		//e.stopPropagation();
+	});
+	
+	$('.table-body-container').on('scroll', function(){
+		$('.table-header-container').scrollLeft($(this).scrollLeft());
+	});
+
+    $('#header').addClass("table-scrollbar");
+    $('#rowName').addClass("table-scrollbar");
+});
+
+</script>
+
+</html>

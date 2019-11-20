@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    table {
+        width: auto;
+        border-left: 1px solid black;
+        border-collapse: collapse;
+        border-spacing: 0;
+        table-layout: fixed;
+        padding-left:0!important;
+        padding-right:0!important;	
+        margin-left:0!important;
+        margin-right:0!important;
+    }
+    th, td {
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;		
+        overflow: hidden;
+        white-space: nowrap;
+        padding-left:0!important;
+        padding-right:0!important;	
+        margin-left:0!important;
+        margin-right:0!important;
+    }
+    #cell {
+        width: 50px;
+    }
+    </style>
+    <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="colResizable-1.6.js"></script>
+
+</head>
+
+<body>
+
+<table id="subcolumns">
+    
+</table>
+
+<table id="table-body">
+    <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+    </colgroup>
+    
+</table>
+
+<p id="demo"></p>
+
+<script type="text/javascript">
+
+$(function() {
+
+// header
+var colModel = [
+    { title: "Some No", colModel: [] },
+    { title: "Company", width: 140, align: "center", colModel: [{ title: "Company A" }, { title: "Company B"}] },
+    { title: "Balance Sheet", align: "center", colModel: [
+        { title: "Revenues", dataType: "float", align: "center", colModel: [
+            {
+                title: "Domestic",
+                dataIndx: 3,
+                format: '$##,###.00',
+                dataType: "float"
+            },
+            {
+                title: "Exports",
+                dataIndx: 4,
+                format: '$##,###.00',
+                dataType: "float"
+            },
+            {
+                title: "Total",
+                width: 120,
+                editable: false,
+                dataIndx: 6,
+                dataType: "float",
+                format: '$##,###.00',
+                formula: function (ui) {                           
+                    var rd = ui.rowData;
+                    return rd[3] + rd[4];
+                }
+            }
+        ]},
+        {
+            title: "Expenditure",
+            dataType: "float",
+            format: '$##,###.00',
+            dataIndx: 5
+        },
+        {
+            title: "Profits = Total - Expenditure",
+            width: 140,
+            dataType: "float",
+            editable: false,
+            dataIndx: 7,
+            format: '$##,###.00',
+            formula: function (ui) {                        
+                var rd = ui.rowData;
+                return rd[6] - rd[5];
+            }
+        }
+    ]},        
+    { title: "Rank", align: 'center', colModel: [
+        { title: "Rank1" }, 
+        { title: "Rank2", colModel: [
+            { title: "Rank21" },
+            { title: "Rank 22", colModel: [
+                { title: "Rank 221" },
+                { title: "Rank 222", colModel: [
+                    { title: "Rank 2221" },
+                    { title: "Rank 2222" },
+                    { title: "Rank 2223" }
+                ]}
+            ]}                    
+        ]},
+        { title: "Rank 3" }
+    ]},
+    {
+        title: "Column", colModel: [{ title: "Column1" }, { title: "Column2"}]
+    }
+];
+
+var cols = 0;
+var rows = 0;
+var rowLength = [];
+
+function colCount(colModel) {
+    var i;
+    for (i = 0; i < colModel.length; i++) {
+        if (colModel[i].colModel && colModel[i].colModel.length > 0)
+            colCount(colModel[i].colModel);
+        else
+            cols++;
+    }
+}
+
+function rowCountHelper(colModel) {
+    var i;
+    for (i = 0; i < colModel.length; i++) {    
+        if (colModel[i].colModel && colModel[i].colModel.length > 0)   
+            rowCountHelper(colModel[i].colModel);             
+    }
+    rows++;   
+}
+
+function rowCount(colModel) {
+    var i;
+    for (i = 0; i < colModel.length; i++) {
+        if(colModel[i].colModel && colModel[i].colModel.length > 0) 
+            rowCountHelper(colModel[i].colModel);
+        rows++;
+        rowLength.push(rows);
+        rows = 0;
+    }
+}
+
+var $table = $("#subcolumns");
+var $table1 = $("#table-body");
+//var subCols = [];
+
+function renderRows(colModel) {
+    var i;
+    var $tr = $("<tr>");
+    var subCols = [];
+    
+    for (i = 0; i < colModel.length; i++) {
+        $td = $("<th>").append($("<div id='cell'>").append(colModel[i].title));
+              
+        if (colModel[i].colModel && colModel[i].colModel.length > 0) {
+            var k;         
+            for (k = 0; k < colModel[i].colModel.length; k++) {
+                subCols.push(colModel[i].colModel[k]);
+            }    
+            cols = 0;
+            colCount(colModel[i].colModel);
+            $td.attr("colspan", cols);
+        }
+        else
+            $td.attr("rowspan", rows);
+        $tr.append($td);
+        
+        if (i == colModel.length - 1) {
+			$table.append($tr);
+            rows--;
+            renderRows(subCols);
+        }
+    }
+}
+
+function renderHiddenRows() {
+    //cols = 0;
+    colCount(colModel);
+    var i;
+    $tr = $('<tr style="visibility:hidden">');
+    for (i = 0; i < cols; i++) {
+        $td = $("<td>");
+        $tr.append($td);
+    }
+    $table.append($tr);
+    cols = 0;
+}
+
+function renderDataRows() {
+    cols = 0;
+    colCount(colModel);
+    var j;
+    for (j = 0; j < 20; j++) {
+        var i;
+        $tr = $('<tr>');
+        for (i = 0; i < cols; i++) {
+            $td = $("<td>").append($("<div id='cell'>").append("10000000000000000000000000"));
+            $tr.append($td);
+        }
+        $table1.append($tr);
+    }
+    cols = 0;
+}
+
+function renderHeader() {
+    renderHiddenRows();
+    rowCount(colModel);
+    rows = Math.max(...rowLength);
+    renderRows(colModel);
+    renderDataRows();
+}
+
+renderHeader();
+
+$("#subcolumns").colResizable({
+    liveDrag:true,
+    //gripInnerHtml:"<div class='grip'></div>", 
+    //draggingClass:"dragging", 
+    resizeMode:'overflow'
+});
+
+//colCount(colModel);
+//rowCount(colModel);
+
+//document.getElementById("demo").innerHTML = "rows: " + Math.max(...rowLength) + ", cols: " + cols;
+
+});
+
+</script>
+
+</body>
+</html>

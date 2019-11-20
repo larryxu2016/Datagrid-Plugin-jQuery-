@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+	body {
+		background-image: url("./styles/images/bg.jpeg");
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+	.scroll {
+		overflow-x:scroll;
+		max-width:100%;
+		position:relative;
+	}
+
+	.demo {
+		width: 500px;
+		height: 300px;
+		margin: 12% auto;
+		padding: 40px;
+		background-color:rgba(255,255,255,0.1);
+		backdrop-filter: blur(5px);
+		border-radius: 5px;
+	}
+</style>
+
+<link type="text/css" rel="stylesheet" href="styles/styles.css" />
+<!-- <link type="text/css" rel="stylesheet" href="flexGrid-theme.min.css" /> -->
+<link type="text/css" rel="stylesheet" href="jquery-ui.min.css" />
+<link type="text/css" rel="stylesheet" href="jquery-ui.theme.min.css" />
+
+<script type="text/javascript" src="../lib/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="jquery-ui.min.js"></script>
+<script type="text/javascript" src="flexGridV1.1.js"></script>
+<script type="text/javascript" src="colResizable-1.6.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$("#flexGrid2").flexGrid({
+			width: 500,		
+			dataOps: {			
+				loadData: function(filter) {
+					var d = $.Deferred();			
+					$.ajax({
+						type: "GET",
+						url:  "dbtables.php",
+						data: filter,
+						dataType: "JSON"
+					}).done(function(tables) {
+						/*console.log(tables);
+						tables = $.grep(customers, function(customer) {
+							return (!filter.ID || customer.ID === filter.ID)
+								&& (!filter.Name || customer.Name.indexOf(filter.Name) > -1)
+								&& (!filter.Areacode || customer.Areacode.indexOf(filter.Areacode) > -1);
+						});*/
+						d.resolve(tables);
+									
+					}).fail(function (request, status, error) {
+						alert(request.responseText);
+					});	
+					return d.promise();
+				}
+			},
+
+			fixedCols: [
+				{ title: "Column1", type: "text", cols:[
+					{ title: "ID", type: "number", width: 50 },
+					{ title: "Table", type: "text", width: 50 } ] },
+				{ title: "Column2", type: "text", cols:[
+					{ title: "Type", type: "text", width: 50 }] }
+			],
+
+			cols: [
+				{ title: "Column3", type: "text", cols:[
+					{ title: "Location", type: "text", width: 50 },
+					{ title: "Seats", type: "number", width: 50 },
+					{ title: "Available", type: "checkbox", width: 50 } ] }
+			]
+		});
+
+		var isSyncingLeftScroll = false;
+		var isSyncingRightScroll = false;
+		
+		$('.bottom-right-container').on('scroll', function() {
+			if (!isSyncingLeftScroll) {
+				isSyncingRightScroll = true;
+				$('.bottom-left-container').scrollTop($(this).scrollTop());
+				$('.top-right-container').scrollLeft($(this).scrollLeft());
+			}	
+			isSyncingLeftScroll = false;
+		});
+
+		$('.bottom-left-container').on('scroll', function() {
+			if (!isSyncingRightScroll) {
+				isSyncingLeftScroll = true;
+				$('.bottom-right-container').scrollTop($(this).scrollTop());
+			}	
+			isSyncingRightScroll = false;		
+		});
+
+		$("#normal").colResizable({
+			liveDrag:true, 
+			gripInnerHtml:"<div class='grip'></div>", 
+			draggingClass:"dragging", 
+            resizeMode:'fit'
+        });
+        
+        $("#flex").colResizable({
+            liveDrag:true, 
+            // gripInnerHtml:"<div class='grip'></div>", 
+            draggingClass:"dragging", 
+            resizeMode:'flex'
+        });
+
+      	$("#disabled").colResizable({
+          	liveDrag:true, 
+          	gripInnerHtml:"<div class='grip'></div>", 
+          	draggingClass:"dragging", 
+          	resizeMode:'overflow',
+          	disabledColumns: [2]
+		});
+        
+	});	
+
+</script>
+</head>
+
+<body>
+
+<div class="demo">
+	<div id="flexGrid2"></div>
+</div>
+
+</body>
+</html>
